@@ -1,8 +1,16 @@
-# Django Student Management System (beta)
-This is a Simple Student Management System Developed for Educational Purpose using Python (Django).
+### Conda activate shell
+```bash
+  eval "$(/home/nehal/anaconda3/bin/conda shell.bash hook)"
+  conda activate work
+  python manage.py runserver
+```
+
+
+# Django Hospital Management System (beta)
+This is a Simple Hospital Management System Developed for Educational Purpose using Python (Django).
 Feel free to make changes based on your requirements.
 
-[Project Demo on YouTube](https://www.youtube.com/watch?v=kArCR96m7uo "Django Student Management System Demo")
+[Project Demo on YouTube](https://www.youtube.com/watch?v=kArCR96m7uo "Django Hospital Management System Demo")
 
 I've created this project while learnging Django and followed tutorial series from **SuperCoders**
 
@@ -12,7 +20,7 @@ And if you like this project then ADD a STAR ⭐️  to this project 👆
 
 ### A. Admin Users Can
 1. See Overall Summary Charts of Stuudents Performance, Staffs Perfomrances, Courses, Subjects, Leave, etc.
-2. Manage Staffs (Add, Update and Delete)
+2. Manage Doctorss (Add, Update and Delete)
 3. Manage Students (Add, Update and Delete)
 4. Manage Course (Add, Update and Delete)
 5. Manage Subjects (Add, Update and Delete)
@@ -156,9 +164,4 @@ Password: staff
 Email: student@gmail.com
 Password: student
 
-
-
-## For Sponsor or Projects Enquiry
-1. Email - hi@vijaythapa.com
-2. LinkedIn - [vijaythapa](https://www.linkedin.com/in/vijaythapa "Vijay Thapa on LinkedIn")
 

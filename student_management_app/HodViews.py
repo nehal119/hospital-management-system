@@ -111,7 +111,7 @@ def add_staff_save(request):
             messages.success(request, "Staff Added Successfully!")
             return redirect('add_staff')
         except:
-            messages.error(request, "Failed to Add Staff!")
+            messages.error(request, "Failed to Add Doctors!")
             return redirect('add_staff')
 
 
@@ -376,7 +376,7 @@ def add_student_save(request):
                 messages.success(request, "Student Added Successfully!")
                 return redirect('add_student')
             except:
-                messages.error(request, "Failed to Add Student!")
+                messages.error(request, "Failed to Add Patients!")
                 return redirect('add_student')
         else:
             return redirect('add_student')
