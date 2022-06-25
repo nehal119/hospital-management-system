@@ -1,8 +1,8 @@
 ### Conda activate shell
 ```bash
-  eval "$(/home/nehal/anaconda3/bin/conda shell.bash hook)"
-  conda activate work
-  python manage.py runserver
+  $ eval "$(/home/nehal/anaconda3/bin/conda shell.bash hook)"
+  $ conda activate work
+  $ python manage.py runserver
 ```
 
 
