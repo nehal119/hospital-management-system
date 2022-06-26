@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
+import uuid
 
 from student_management_app.models import CustomUser, Staffs, Courses, Subjects, Students, SessionYearModel, FeedBackStudent, FeedBackStaffs, LeaveReportStudent, LeaveReportStaff, Attendance, AttendanceReport
 from .forms import AddStudentForm, EditStudentForm
@@ -338,45 +339,56 @@ def add_student_save(request):
         form = AddStudentForm(request.POST, request.FILES)
 
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
+            subject_id = uuid.uuid4()
+            hadm_id = uuid.uuid4()
+
+            name = form.cleaned_data['name']
+            # last_name = form.cleaned_data['last_name']
+            # username = form.cleaned_data['username']
+            # email = form.cleaned_data['email']
+            # password = form.cleaned_data['password']
             address = form.cleaned_data['address']
-            session_year_id = form.cleaned_data['session_year_id']
-            course_id = form.cleaned_data['course_id']
+            # session_year_id = form.cleaned_data['session_year_id']
+            # course_id = form.cleaned_data['course_id']
             gender = form.cleaned_data['gender']
+            admittime = form.cleaned_data['admittime']
+            dischtime = form.cleaned_data['dischtime']
+            deathtime = form.cleaned_data['deathtime']
 
             # Getting Profile Pic first
             # First Check whether the file is selected or not
             # Upload only if file is selected
-            if len(request.FILES) != 0:
-                profile_pic = request.FILES['profile_pic']
-                fs = FileSystemStorage()
-                filename = fs.save(profile_pic.name, profile_pic)
-                profile_pic_url = fs.url(filename)
-            else:
-                profile_pic_url = None
+            # if len(request.FILES) != 0:
+            #     profile_pic = request.FILES['profile_pic']
+            #     fs = FileSystemStorage()
+            #     filename = fs.save(profile_pic.name, profile_pic)
+            #     profile_pic_url = fs.url(filename)
+            # else:
+            #     profile_pic_url = None
 
 
             try:
-                user = CustomUser.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, user_type=3)
+                user = CustomUser.objects.create_user(name=name, user_type=3)
                 user.students.address = address
+                user.students.subject_id = subject_id
+                user.students.hadm_id = hadm_id
+                user.students.admittime = admittime
+                user.students.dischtime = dischtime
+                user.students.deathtime = deathtime
 
-                course_obj = Courses.objects.get(id=course_id)
-                user.students.course_id = course_obj
+                # course_obj = Courses.objects.get(id=course_id)
+                # user.students.course_id = course_obj
 
-                session_year_obj = SessionYearModel.objects.get(id=session_year_id)
-                user.students.session_year_id = session_year_obj
+                # session_year_obj = SessionYearModel.objects.get(id=session_year_id)
+                # user.students.session_year_id = session_year_obj
 
                 user.students.gender = gender
-                user.students.profile_pic = profile_pic_url
+                # user.students.profile_pic = profile_pic_url
                 user.save()
                 messages.success(request, "Student Added Successfully!")
                 return redirect('add_student')
             except:
-                messages.error(request, "Failed to Add Patients!")
+                messages.error(request, "Failed to New Admission!")
                 return redirect('add_student')
         else:
             return redirect('add_student')

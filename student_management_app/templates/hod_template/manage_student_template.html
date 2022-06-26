@@ -1,7 +1,7 @@
 {% extends 'hod_template/base_template.html' %}
 
 {% block page_title %}
-    Manage Patients
+    Admission
 {% endblock page_title %}
 
 {% block main_content %}
@@ -11,7 +11,7 @@
 <section class="content">
         <div class="container-fluid">
 
-            <a class="btn btn-primary" href="{% url 'add_student' %}" role="button">+ Add Patients</a> <br/>&nbsp;
+            <a class="btn btn-primary" href="{% url 'add_student' %}" role="button">+ New Admission</a> <br/>&nbsp;
             
             {% if messages %}
                                 <div class="form-group">
@@ -67,7 +67,7 @@
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Gender</th>
-                                <th>Profile Pic</th>
+                                <!-- <th>Profile Pic</th> -->
                                 <th>Start Year</th>
                                 <th>End Year</th>
                                 <th>Course</th>
@@ -86,7 +86,7 @@
                                 <td>{{ student.admin.email }}</td>
                                 <td>{{ student.address }}</td>
                                 <td>{{ student.gender }}</td>
-                                <td> <img src="{{ student.profile_pic }}" style="width: 100px;" /> </td>
+                                <!-- <td> <img src="{{ student.profile_pic }}" style="width: 100px;" /> </td> -->
                                 <td>{{ student.session_year_id.session_start_year }}</td>
                                 <td>{{ student.session_year_id.session_end_year }}</td>
                                 <td>{{ student.course_id.course_name }}</td>
