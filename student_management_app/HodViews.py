@@ -355,6 +355,12 @@ def add_student_save(request):
             dischtime = form.cleaned_data['dischtime']
             deathtime = form.cleaned_data['deathtime']
 
+            admission_type = form.cleaned_data['admission_type']
+            admission_location = form.cleaned_data['admission_location']
+            insurance = form.cleaned_data['insurance']
+            marital_status = form.cleaned_data['marital_status']
+            diagnosis = form.cleaned_data['diagnosis']
+
             # Getting Profile Pic first
             # First Check whether the file is selected or not
             # Upload only if file is selected
@@ -375,6 +381,12 @@ def add_student_save(request):
                 user.students.admittime = admittime
                 user.students.dischtime = dischtime
                 user.students.deathtime = deathtime
+
+                user.students.admission_type = admission_type
+                user.students.admission_location = admission_location
+                user.students.insurance = insurance
+                user.students.marital_status = marital_status
+                user.students.diagnosis = diagnosis
 
                 # course_obj = Courses.objects.get(id=course_id)
                 # user.students.course_id = course_obj
