@@ -51,17 +51,20 @@ class AddStudentForm(forms.Form):
     deathtime = forms.DateTimeField(label="Death Time", widget=DateTimeInput(attrs={"class":"form-control"}))
 
     admission_type_list = (
+        ('UNKNOWN','UNKNOWN'),
         ('EMERGENCY','EMERGENCY'),
         ('ELECTIVE','ELECTIVE'),
         ('URGENT','URGENT'),
     )
     admission_location_list = (
+        ('UNKNOWN','UNKNOWN'),
         ('EMERGENCY ROOM ADMIT','EMERGENCY ROOM ADMIT'),
         ('TRANSFER FROM HOSP/EXTRAM','TRANSFER FROM HOSP/EXTRAM'),
         ('PHYS REFERRAL/NORMAL DELI','PHYS REFERRAL/NORMAL DELI'),
         ('CLINIC REFERRAL/PREMATURE','CLINIC REFERRAL/PREMATURE'),
     )
     insurance_list = (
+        ('UNKNOWN','UNKNOWN'),
         ('Medicare','Medicare'),
         ('Private','Private')
     )
