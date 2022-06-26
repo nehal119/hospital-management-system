@@ -46,9 +46,9 @@ class AddStudentForm(forms.Form):
     # session_year_id = forms.ChoiceField(label="Session Year", choices=session_year_list, widget=forms.Select(attrs={"class":"form-control"}))
     # session_end_year = forms.DateField(label="Session End", widget=DateInput(attrs={"class":"form-control"}))
     # profile_pic = forms.FileField(label="Profile Pic", required=False, widget=forms.FileInput(attrs={"class":"form-control"}))
-    admittime = forms.DateTimeField(label="Admit Time", widget=DateTimeInput(attrs={"class":"form-control"}))
-    dischtime = forms.DateTimeField(label="Discharge Time", widget=DateTimeInput(attrs={"class":"form-control"}))
-    deathtime = forms.DateTimeField(label="Death Time", widget=DateTimeInput(attrs={"class":"form-control"}))
+    admittime = forms.DateField(label="Admit Time", widget=DateInput(attrs={"class":"form-control"}))
+    dischtime = forms.DateField(label="Discharge Time", widget=DateInput(attrs={"class":"form-control"}))
+    deathtime = forms.DateField(label="Death Time", widget=DateInput(attrs={"class":"form-control"}))
 
     admission_type_list = (
         ('UNKNOWN','UNKNOWN'),
