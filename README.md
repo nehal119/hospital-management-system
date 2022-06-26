@@ -22,7 +22,7 @@ And if you like this project then ADD a STAR ⭐️  to this project 👆
 1. See Overall Summary Charts of Stuudents Performance, Staffs Perfomrances, Courses, Subjects, Leave, etc.
 2. Manage Doctorss (Add, Update and Delete)
 3. Manage Admission (Add, Update and Delete)
-4. Manage Course (Add, Update and Delete)
+4. Manage Drugs (Add, Update and Delete)
 5. Manage Subjects (Add, Update and Delete)
 6. Manage Sessions (Add, Update and Delete)
 7. View Student Attendance

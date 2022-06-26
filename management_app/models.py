@@ -38,29 +38,6 @@ class Staffs(models.Model):
 
 
 
-class Courses(models.Model):
-    id = models.AutoField(primary_key=True)
-    course_name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = models.Manager()
-
-    # def __str__(self):
-	#     return self.course_name
-
-
-
-class Subjects(models.Model):
-    id =models.AutoField(primary_key=True)
-    subject_name = models.CharField(max_length=255)
-    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE, default=1) #need to give defauult course
-    staff_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = models.Manager()
-
-
-
 class Admission(models.Model):
     id = models.AutoField(primary_key=True)
     subject_id = models.TextField(default='UNKNOWN')
@@ -86,6 +63,33 @@ class Admission(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
 
+
+class Courses(models.Model):
+    # TODO
+    id = models.AutoField(primary_key=True)
+    subject_id = models.TextField(default='UNKNOWN')
+    hadm_id = models.ForeignKey(Admission, on_delete=models.DO_NOTHING, default=1)
+
+    drg_type = models.TextField(default='UNKNOWN')
+    drg_code = models.IntegerField(default=0)
+    description = models.TextField(default='UNKNOWN')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+
+    # def __str__(self):
+	#     return self.course_name
+
+
+class Subjects(models.Model):
+    id =models.AutoField(primary_key=True)
+    subject_name = models.CharField(max_length=255)
+    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE, default=1) #need to give defauult course
+    staff_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
 
 class Attendance(models.Model):
     # Subject Attendance

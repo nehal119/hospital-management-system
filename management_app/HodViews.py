@@ -192,14 +192,18 @@ def add_course_save(request):
         messages.error(request, "Invalid Method!")
         return redirect('add_course')
     else:
-        course = request.POST.get('course')
+        subject_id = uuid.uuid4()
+        # hadm_id = uuid.uuid4()
+        drg_type = request.POST.get('drg_type')
+        drg_code = request.POST.get('drg_code')
+        description = request.POST.get('description')
         try:
-            course_model = Courses(course_name=course)
+            course_model = Courses(subject_id=subject_id, drg_type=drg_type, drg_code=drg_code, description=description)
             course_model.save()
-            messages.success(request, "Course Added Successfully!")
+            messages.success(request, "Drug Added Successfully!")
             return redirect('add_course')
         except:
-            messages.error(request, "Failed to Add Course!")
+            messages.error(request, "Failed to Add Drug!")
             return redirect('add_course')
 
 
@@ -343,13 +347,7 @@ def add_student_save(request):
             hadm_id = uuid.uuid4()
 
             name = form.cleaned_data['name']
-            # last_name = form.cleaned_data['last_name']
-            # username = form.cleaned_data['username']
-            # email = form.cleaned_data['email']
-            # password = form.cleaned_data['password']
             address = form.cleaned_data['address']
-            # session_year_id = form.cleaned_data['session_year_id']
-            # course_id = form.cleaned_data['course_id']
             gender = form.cleaned_data['gender']
             admittime = form.cleaned_data['admittime']
             dischtime = form.cleaned_data['dischtime']
