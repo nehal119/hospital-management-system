@@ -93,14 +93,14 @@ def admin_home(request):
     return render(request, "hod_template/home_content.html", context)
 
 
-def add_staff(request):
+def add_doctors(request):
     return render(request, "hod_template/add_staff_template.html")
 
 
 def add_staff_save(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method ")
-        return redirect('add_staff')
+        return redirect('add_doctors')
     else:
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -115,13 +115,13 @@ def add_staff_save(request):
             user.staffs.address = address
             user.save()
             messages.success(request, "Staff Added Successfully!")
-            return redirect('add_staff')
+            return redirect('add_doctors')
         except:
             messages.error(request, "Failed to Add Doctors!")
-            return redirect('add_staff')
+            return redirect('add_doctors')
 
 
-def manage_staff(request):
+def manage_doctors(request):
     staffs = Staffs.objects.all()
     context = {
         "staffs": staffs
@@ -177,20 +177,20 @@ def delete_staff(request, staff_id):
     try:
         staff.delete()
         messages.success(request, "Staff Deleted Successfully.")
-        return redirect('manage_staff')
+        return redirect('manage_doctors')
     except:
         messages.error(request, "Failed to Delete Staff.")
-        return redirect('manage_staff')
+        return redirect('manage_doctors')
 
 
-def add_course(request):
+def add_drugs(request):
     return render(request, "hod_template/add_course_template.html")
 
 
 def add_course_save(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method!")
-        return redirect('add_course')
+        return redirect('add_drugs')
     else:
         subject_id = uuid.uuid4()
         # hadm_id = uuid.uuid4()
@@ -201,13 +201,13 @@ def add_course_save(request):
             course_model = Courses(subject_id=subject_id, drg_type=drg_type, drg_code=drg_code, description=description)
             course_model.save()
             messages.success(request, "Drug Added Successfully!")
-            return redirect('add_course')
+            return redirect('add_drugs')
         except:
             messages.error(request, "Failed to Add Drug!")
-            return redirect('add_course')
+            return redirect('add_drugs')
 
 
-def manage_course(request):
+def manage_drugs(request):
     courses = Courses.objects.all()
     context = {
         "courses": courses
@@ -249,10 +249,10 @@ def delete_course(request, course_id):
     try:
         course.delete()
         messages.success(request, "Course Deleted Successfully.")
-        return redirect('manage_course')
+        return redirect('manage_drugs')
     except:
         messages.error(request, "Failed to Delete Course.")
-        return redirect('manage_course')
+        return redirect('manage_drugs')
 
 
 def manage_session(request):
@@ -270,7 +270,7 @@ def add_session(request):
 def add_session_save(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method")
-        return redirect('add_course')
+        return redirect('add_drugs')
     else:
         session_start_year = request.POST.get('session_start_year')
         session_end_year = request.POST.get('session_end_year')
@@ -327,7 +327,7 @@ def delete_session(request, session_id):
         return redirect('manage_session')
 
 
-def add_student(request):
+def add_admission(request):
     form = AddStudentForm()
     context = {
         "form": form
@@ -338,7 +338,7 @@ def add_student(request):
 def add_student_save(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method")
-        return redirect('add_student')
+        return redirect('add_admission')
     else:
         form = AddStudentForm(request.POST, request.FILES)
 
@@ -396,15 +396,15 @@ def add_student_save(request):
                 # user.admissions.profile_pic = profile_pic_url
                 user.save()
                 messages.success(request, "Student Added Successfully!")
-                return redirect('add_student')
+                return redirect('add_admission')
             except:
                 messages.error(request, "Failed to New Admission!")
-                return redirect('add_student')
+                return redirect('add_admission')
         else:
-            return redirect('add_student')
+            return redirect('add_admission')
 
 
-def manage_student(request):
+def manage_admission(request):
     admissions = Admission.objects.all()
     context = {
         "admissions": admissions
@@ -442,7 +442,7 @@ def edit_student_save(request):
     else:
         student_id = request.session.get('student_id')
         if student_id == None:
-            return redirect('/manage_student')
+            return redirect('/manage_admission')
 
         form = EditStudentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -507,10 +507,10 @@ def delete_student(request, student_id):
     try:
         student.delete()
         messages.success(request, "Student Deleted Successfully.")
-        return redirect('manage_student')
+        return redirect('manage_admission')
     except:
         messages.error(request, "Failed to Delete Student.")
-        return redirect('manage_student')
+        return redirect('manage_admission')
 
 
 def add_subject(request):
