@@ -1,7 +1,7 @@
 {% extends 'hod_template/base_template.html' %}
 
 {% block page_title %}
-    Edit Course | #ID : {{ course.id }}
+    Edit Drug | #ID : {{ course.id }}
 {% endblock page_title %}
 
 {% block main_content %}
@@ -16,7 +16,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Edit Course</h3>
+                        <h3 class="card-title">Edit Drug</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -52,8 +52,16 @@
 
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Course Name </label>
-                                <input type="text" class="form-control" name="course" value="{{ course.course_name }}">
+                                <label>Drug Type </label>
+                                <input type="text" class="form-control" name="drg_type" value="{{ course.drg_type }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Drug Code </label>
+                                <input type="text" class="form-control" name="drg_code" value="{{ course.drg_code }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Description </label>
+                                <input type="text" class="form-control" name="description" value="{{ course.description }}">
                                 <input type="hidden" name="course_id" value="{{ course.id }}" />
                             </div>
 

@@ -229,11 +229,15 @@ def edit_course_save(request):
         HttpResponse("Invalid Method")
     else:
         course_id = request.POST.get('course_id')
-        course_name = request.POST.get('course')
+        drg_type = request.POST.get('drg_type')
+        drg_code = request.POST.get('drg_code')
+        description = request.POST.get('description')
 
         try:
             course = Courses.objects.get(id=course_id)
-            course.course_name = course_name
+            course.drg_type = drg_type
+            course.drg_code = drg_code
+            course.description = description
             course.save()
 
             messages.success(request, "Course Updated Successfully.")
