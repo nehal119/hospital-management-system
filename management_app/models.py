@@ -44,7 +44,6 @@ class Admission(models.Model):
     hadm_id = models.TextField(default='UNKNOWN')
     # admin = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
     gender = models.CharField(max_length=50)
-    # profile_pic = models.FileField()
     address = models.TextField()
     name = models.TextField(default='UNKNOWN')
     # course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING, default=1)

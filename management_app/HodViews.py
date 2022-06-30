@@ -409,6 +409,26 @@ def manage_admission(request):
     context = {
         "admissions": admissions
     }
+    # print("========================")
+    # print("========================")
+    # for student in admissions:
+    #     print(student.id)
+    #     print(student.subject_id)
+    #     print(student.hadm_id)
+    #     print(student.name)
+    #     print(student.address)
+    #     print(student.gender)
+    #     print(student.admittime)
+    #     print(student.dischtime)
+    #     print(student.deathtime)
+    #     print(student.admission_type)
+    #     print(student.admission_location)
+    #     print(student.insurance)
+    #     print(student.marital_status)
+    #     print(student.diagnosis)
+    #     print(student.created_at)
+    #     print(student.updated_at)
+
     return render(request, 'hod_template/manage_student_template.html', context)
 
 

@@ -61,40 +61,46 @@
                             <thead>
                                 <tr>
                                 <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                                <th>Email</th>
+                                <th>Subject ID</th>
+                                <th>Hospital Admission ID</th>
+                                <th>Name</th>
                                 <th>Address</th>
                                 <th>Gender</th>
-                                <!-- <th>Profile Pic</th> -->
-                                <th>Start Year</th>
-                                <th>End Year</th>
-                                <th>Course</th>
-                                <th>Last Login</th>
-                                <th>Date Joined</th>
+                                <th>Admit Time</th>
+                                <th>Discharge Time</th>
+                                <th>Death Time</th>
+                                <th>Admission Type</th>
+                                <th>Admission Location</th>
+                                <th>Insurance</th>
+                                <th>Marital Status</th>
+                                <th>Diagnosis</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for student in admissions %}
                                 <tr>
-                                <td>{{ student.admin.id }}</td>
-                                <td>{{ student.admin.first_name }}</td>
-                                <td>{{ student.admin.last_name }}</td>
-                                <td>{{ student.admin.username }}</td>
-                                <td>{{ student.admin.email }}</td>
+                                <td>{{ student.id }}</td>
+                                <td>{{ student.subject_id }}</td>
+                                <td>{{ student.hadm_id }}</td>
+                                <td>{{ student.name }}</td>
                                 <td>{{ student.address }}</td>
                                 <td>{{ student.gender }}</td>
-                                <!-- <td> <img src="{{ student.profile_pic }}" style="width: 100px;" /> </td> -->
-                                <td>{{ student.session_year_id.session_start_year }}</td>
-                                <td>{{ student.session_year_id.session_end_year }}</td>
-                                <td>{{ student.course_id.course_name }}</td>
-                                <td>{{ student.admin.last_login }}</td>
-                                <td>{{ student.admin.date_joined }}</td>
+                                <td>{{ student.admittime }}</td>
+                                <td>{{ student.dischtime }}</td>
+                                <td>{{ student.deathtime }}</td>
+                                <td>{{ student.admission_type }}</td>
+                                <td>{{ student.admission_location }}</td>
+                                <td>{{ student.insurance }}</td>
+                                <td>{{ student.marital_status }}</td>
+                                <td>{{ student.diagnosis }}</td>
+                                <td>{{ student.created_at }}</td>
+                                <td>{{ student.updated_at }}</td>
                                 <td>
-                                    <a href="{% url 'edit_student' student.admin.id %}" class="btn btn-success">Edit</a> 
-                                    <a href="{% url 'delete_student' student.admin.id %}" class="btn btn-danger">Delete</a>
+                                    <a href="{% url 'edit_student' student.id %}" class="btn btn-success">Edit</a> 
+                                    <a href="{% url 'delete_student' student.id %}" class="btn btn-danger">Delete</a>
                                 </td>
                                 </tr>
                                 {% endfor %}

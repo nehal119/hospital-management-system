@@ -8,11 +8,7 @@ class DateInput(forms.DateInput):
 
 
 class AddStudentForm(forms.Form):
-    # email = forms.EmailField(label="Email", max_length=50, widget=forms.EmailInput(attrs={"class":"form-control"}))
-    # password = forms.CharField(label="Password", max_length=50, widget=forms.PasswordInput(attrs={"class":"form-control"}))
     name = forms.CharField(label="Name", max_length=50, widget=forms.TextInput(attrs={"class":"form-control"}))
-    # last_name = forms.CharField(label="Last Name", max_length=50, widget=forms.TextInput(attrs={"class":"form-control"}))
-    # username = forms.CharField(label="Username", max_length=50, widget=forms.TextInput(attrs={"class":"form-control"}))
     address = forms.CharField(label="Address", max_length=150, widget=forms.TextInput(attrs={"class":"form-control"}))
 
     # #For Displaying Courses
@@ -41,11 +37,7 @@ class AddStudentForm(forms.Form):
         ('Female','Female')
     )
     
-    # course_id = forms.ChoiceField(label="Course", choices=course_list, widget=forms.Select(attrs={"class":"form-control"}))
     gender = forms.ChoiceField(label="Gender", choices=gender_list, widget=forms.Select(attrs={"class":"form-control"}))
-    # session_year_id = forms.ChoiceField(label="Session Year", choices=session_year_list, widget=forms.Select(attrs={"class":"form-control"}))
-    # session_end_year = forms.DateField(label="Session End", widget=DateInput(attrs={"class":"form-control"}))
-    # profile_pic = forms.FileField(label="Profile Pic", required=False, widget=forms.FileInput(attrs={"class":"form-control"}))
     admittime = forms.DateField(label="Admit Time", widget=DateInput(attrs={"class":"form-control"}))
     dischtime = forms.DateField(label="Discharge Time", widget=DateInput(attrs={"class":"form-control"}))
     deathtime = forms.DateField(label="Death Time", widget=DateInput(attrs={"class":"form-control"}))
