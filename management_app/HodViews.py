@@ -436,21 +436,24 @@ def edit_student(request, student_id):
     # Adding Student ID into Session Variable
     request.session['student_id'] = student_id
 
-    student = Admission.objects.get(admin=student_id)
+    student = Admission.objects.get(id=student_id)
     form = EditStudentForm()
     # Filling the form with Data from Database
-    form.fields['email'].initial = student.admin.email
-    form.fields['username'].initial = student.admin.username
-    form.fields['first_name'].initial = student.admin.first_name
-    form.fields['last_name'].initial = student.admin.last_name
+    form.fields['name'].initial = student.name
+    form.fields['admittime'].initial = student.admittime
+    form.fields['dischtime'].initial = student.dischtime
+    form.fields['deathtime'].initial = student.deathtime
     form.fields['address'].initial = student.address
-    form.fields['course_id'].initial = student.course_id.id
     form.fields['gender'].initial = student.gender
-    form.fields['session_year_id'].initial = student.session_year_id.id
+    form.fields['admission_type'].initial = student.admission_type
+    form.fields['admission_location'].initial = student.admission_location
+    form.fields['insurance'].initial = student.insurance
+    form.fields['marital_status'].initial = student.marital_status
+    form.fields['diagnosis'].initial = student.diagnosis
 
     context = {
         "id": student_id,
-        "username": student.admin.username,
+        "name": student.name,
         "form": form
     }
     return render(request, "hod_template/edit_student_template.html", context)
@@ -466,49 +469,42 @@ def edit_student_save(request):
 
         form = EditStudentForm(request.POST, request.FILES)
         if form.is_valid():
-            email = form.cleaned_data['email']
-            username = form.cleaned_data['username']
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
+            name = form.cleaned_data['name']
             address = form.cleaned_data['address']
-            course_id = form.cleaned_data['course_id']
             gender = form.cleaned_data['gender']
-            session_year_id = form.cleaned_data['session_year_id']
+            admittime = form.cleaned_data['admittime']
+            dischtime = form.cleaned_data['dischtime']
+            deathtime = form.cleaned_data['deathtime']
 
-            # Getting Profile Pic first
-            # First Check whether the file is selected or not
-            # Upload only if file is selected
-            if len(request.FILES) != 0:
-                profile_pic = request.FILES['profile_pic']
-                fs = FileSystemStorage()
-                filename = fs.save(profile_pic.name, profile_pic)
-                profile_pic_url = fs.url(filename)
-            else:
-                profile_pic_url = None
+            admission_type = form.cleaned_data['admission_type']
+            admission_location = form.cleaned_data['admission_location']
+            insurance = form.cleaned_data['insurance']
+            marital_status = form.cleaned_data['marital_status']
+            diagnosis = form.cleaned_data['diagnosis']
 
             try:
                 # First Update into Custom User Model
-                user = CustomUser.objects.get(id=student_id)
-                user.first_name = first_name
-                user.last_name = last_name
-                user.email = email
-                user.username = username
-                user.save()
+                # user = CustomUser.objects.get(id=student_id)
+                # user.first_name = first_name
+                # user.last_name = last_name
+                # user.email = email
+                # user.username = username
+                # user.save()
 
                 # Then Update Admission Table
-                student_model = Admission.objects.get(admin=student_id)
+                student_model = Admission.objects.get(id=student_id)
+                student_model.name = name
                 student_model.address = address
-
-                course = Courses.objects.get(id=course_id)
-                student_model.course_id = course
-
-                session_year_obj = SessionYearModel.objects.get(
-                    id=session_year_id)
-                student_model.session_year_id = session_year_obj
-
                 student_model.gender = gender
-                if profile_pic_url != None:
-                    student_model.profile_pic = profile_pic_url
+                student_model.admittime = admittime
+                student_model.dischtime = dischtime
+                student_model.deathtime = deathtime
+                student_model.admission_type = admission_type
+                student_model.admission_location = admission_location
+                student_model.insurance = insurance
+                student_model.marital_status = marital_status
+                student_model.diagnosis = diagnosis
+
                 student_model.save()
                 # Delete student_id SESSION after the data is updated
                 del request.session['student_id']
