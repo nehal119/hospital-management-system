@@ -259,7 +259,7 @@ def delete_course(request, course_id):
         return redirect('manage_drugs')
 
 
-def manage_session(request):
+def manage_labevents(request):
     session_years = SessionYearModel.objects.all()
     context = {
         "session_years": session_years
@@ -267,7 +267,7 @@ def manage_session(request):
     return render(request, "hod_template/manage_session_template.html", context)
 
 
-def add_session(request):
+def add_labevents(request):
     admission = Admission.objects.all()
     context = {
         "admission": admission,
@@ -290,10 +290,10 @@ def add_session_save(request):
             sessionyear = SessionYearModel(event_name=event_name,event_time=event_time, hadm_id=admission)
             sessionyear.save()
             messages.success(request, "Session Year added Successfully!")
-            return redirect("add_session")
+            return redirect("add_labevents")
         except:
             messages.error(request, "Failed to Add Session Year")
-            return redirect("add_session")
+            return redirect("add_labevents")
 
 
 def edit_session(request, session_id):
@@ -307,7 +307,7 @@ def edit_session(request, session_id):
 def edit_session_save(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method!")
-        return redirect('manage_session')
+        return redirect('manage_labevents')
     else:
         session_id = request.POST.get('session_id')
         session_start_year = request.POST.get('session_start_year')
@@ -331,10 +331,10 @@ def delete_session(request, session_id):
     try:
         session.delete()
         messages.success(request, "Session Deleted Successfully.")
-        return redirect('manage_session')
+        return redirect('manage_labevents')
     except:
         messages.error(request, "Failed to Delete Session.")
-        return redirect('manage_session')
+        return redirect('manage_labevents')
 
 
 def add_admission(request):
@@ -539,7 +539,7 @@ def delete_student(request, student_id):
         return redirect('manage_admission')
 
 
-def add_subject(request):
+def add_prescription(request):
     admission = Admission.objects.all()
     drugs = Courses.objects.all()
     # staffs = CustomUser.objects.filter(user_type='2')
@@ -553,7 +553,7 @@ def add_subject(request):
 def add_subject_save(request):
     if request.method != "POST":
         messages.error(request, "Method Not Allowed!")
-        return redirect('add_subject')
+        return redirect('add_prescription')
     else:
         prescription_name = request.POST.get('prescription')
 
@@ -567,13 +567,13 @@ def add_subject_save(request):
             prescription = Subjects(prescription_name=prescription_name,hadm_id=admission, drug_id=drug)
             prescription.save()
             messages.success(request, "Prescription Added Successfully!")
-            return redirect('add_subject')
+            return redirect('add_prescription')
         except:
             messages.error(request, "Failed to Add Prescription!")
-            return redirect('add_subject')
+            return redirect('add_prescription')
 
 
-def manage_subject(request):
+def manage_prescription(request):
     subjects = Subjects.objects.all()
     context = {
         "subjects": subjects
@@ -630,10 +630,10 @@ def delete_subject(request, subject_id):
     try:
         subject.delete()
         messages.success(request, "Subject Deleted Successfully.")
-        return redirect('manage_subject')
+        return redirect('manage_prescription')
     except:
         messages.error(request, "Failed to Delete Subject.")
-        return redirect('manage_subject')
+        return redirect('manage_prescription')
 
 
 @csrf_exempt

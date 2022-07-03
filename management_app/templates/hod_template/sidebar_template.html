@@ -101,9 +101,9 @@
             </li>
 
             <li class="nav-item">
-              {% url 'manage_subject' as manage_subject %}
+              {% url 'manage_prescription' as manage_prescription %}
               {% url 'edit_subject' subject_id=id as edit_subject %}
-              <a href="{{ manage_subject }}" class="nav-link {% if request.path == manage_subject %} active {% endif %} {% if request.path == edit_subject %} active {% endif %}">
+              <a href="{{ manage_prescription }}" class="nav-link {% if request.path == manage_prescription %} active {% endif %} {% if request.path == edit_subject %} active {% endif %}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Manage Prescriptions
@@ -112,8 +112,8 @@
             </li>
 
             <li class="nav-item">
-              {% url 'add_subject' as add_subject %}
-              <a href="{{ add_subject }}" class="nav-link {% if request.path == add_subject %} active {% endif %}">
+              {% url 'add_prescription' as add_prescription %}
+              <a href="{{ add_prescription }}" class="nav-link {% if request.path == add_prescription %} active {% endif %}">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Add Prescriptions
@@ -123,9 +123,9 @@
 
 
             <li class="nav-item">
-              {% url 'manage_session' as manage_session %}
+              {% url 'manage_labevents' as manage_labevents %}
               {% url 'edit_session' session_id=id as edit_session %}
-              <a href="{{ manage_session }}" class="nav-link {% if request.path == manage_session %} active {% endif %} {% if request.path == edit_session %} active {% endif %}">
+              <a href="{{ manage_labevents }}" class="nav-link {% if request.path == manage_labevents %} active {% endif %} {% if request.path == edit_session %} active {% endif %}">
                 <i class="nav-icon fas fa-flask"></i>
                 <p>
                   Manage Lab Events 
@@ -134,8 +134,8 @@
             </li>
 
             <li class="nav-item">
-              {% url 'add_session' as add_session %}
-              <a href="{{ add_session }}" class="nav-link {% if request.path == add_session %} active {% endif %}">
+              {% url 'add_labevents' as add_labevents %}
+              <a href="{{ add_labevents }}" class="nav-link {% if request.path == add_labevents %} active {% endif %}">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Add Lab Events

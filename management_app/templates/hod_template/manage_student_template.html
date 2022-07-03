@@ -61,8 +61,6 @@
                             <thead>
                                 <tr>
                                 <th>ID</th>
-                                <th>Subject ID</th>
-                                <th>Hospital Admission ID</th>
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>Gender</th>
@@ -74,6 +72,8 @@
                                 <th>Insurance</th>
                                 <th>Marital Status</th>
                                 <th>Diagnosis</th>
+                                <!-- <th>Subject ID</th>
+                                <th>Hospital Admission ID</th> -->
                                 <th>Created At</th>
                                 <th>Updated At</th>
                                 <th>Action</th>
@@ -83,8 +83,6 @@
                                 {% for student in admissions %}
                                 <tr>
                                 <td>{{ student.id }}</td>
-                                <td>{{ student.subject_id }}</td>
-                                <td>{{ student.hadm_id }}</td>
                                 <td>{{ student.name }}</td>
                                 <td>{{ student.address }}</td>
                                 <td>{{ student.gender }}</td>
@@ -96,6 +94,8 @@
                                 <td>{{ student.insurance }}</td>
                                 <td>{{ student.marital_status }}</td>
                                 <td>{{ student.diagnosis }}</td>
+                                <!-- <td>{{ student.subject_id }}</td>
+                                <td>{{ student.hadm_id }}</td> -->
                                 <td>{{ student.created_at }}</td>
                                 <td>{{ student.updated_at }}</td>
                                 <td>
