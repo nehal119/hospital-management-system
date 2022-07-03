@@ -19,8 +19,6 @@
 This is a Simple Hospital Management System Developed for Educational Purpose using Python (Django).
 Feel free to make changes based on your requirements.
 
-[Project Demo on YouTube](https://www.youtube.com/watch?v=kArCR96m7uo "Django Hospital Management System Demo")
-
 I've created this project while learnging Django and followed tutorial series from **SuperCoders**
 
 And if you like this project then ADD a STAR ⭐️  to this project 👆
@@ -37,35 +35,6 @@ And if you like this project then ADD a STAR ⭐️  to this project 👆
 7. View Student Attendance
 8. Review and Reply Student/Staff Feedback
 9. Review (Approve/Reject) Student/Staff Leave
-
-### B. Staff/Teachers Can
-1. See the Overall Summary Charts related to their admissions, their subjects, leave status, etc.
-2. Take/Update Admission Attendance
-3. Add/Update Result
-4. Apply for Leave
-5. Send Feedback to HOD
-
-### C. Admission Can
-1. See the Overall Summary Charts related to their attendance, their subjects, leave status, etc.
-2. View Attendance
-3. View Result
-4. Apply for Leave
-5. Send Feedback to HOD
-
-
-## Support Developer
-1. Subscribe & Share my YouTube Channel - https://bit.ly/vijay-thapa-online-courses
-2. Add a Star 🌟  to this 👆 Repository
-
-
-## Donate
-
-**[PayPal](https://bit.ly/support-vijay-thapa)**
-
-**[Buy me a Coffee  ☕️](https://www.buymeacoffee.com/vijaythapa)**
-
-**Donate by wire transfer:** E-Mail at *donate@vijaythapa.com* for wire transfer details. 
-
 
 ## How to Install and Run this project?
 
@@ -115,13 +84,10 @@ $  source venv/bin/activate
 ```
 
 **3. Clone this project**
-```
-$  git clone https://github.com/vijaythapa333/django-student-management_system.git
-```
 
 Then, Enter the project
 ```
-$  cd django-student-management_system
+$  cd $PROJECT_FOLDER
 ```
 
 **4. Install Requirements from 'requirements.txt'**
@@ -164,13 +130,3 @@ Then Add Email, Username and Password
 *For HOD /SuperAdmin*
 Email: admin@gmail.com
 Password: admin
-
-*For Staff*
-Email: staff@gmail.com
-Password: staff
-
-*For Student*
-Email: student@gmail.com
-Password: student
-
-
