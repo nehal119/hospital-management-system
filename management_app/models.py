@@ -5,14 +5,6 @@ from django.dispatch import receiver
 
 
 
-class SessionYearModel(models.Model):
-    id = models.AutoField(primary_key=True)
-    session_start_year = models.DateField()
-    session_end_year = models.DateField()
-    objects = models.Manager()
-
-
-
 # Overriding the Default Django Auth User and adding One More Field (user_type)
 class CustomUser(AbstractUser):
     user_type_data = ((1, "HOD"), (2, "Staff"), (3, "Student"))
@@ -62,6 +54,13 @@ class Admission(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
 
+class SessionYearModel(models.Model):
+    id = models.AutoField(primary_key=True)
+    event_time = models.DateField()
+    event_name = models.CharField(max_length=255, default='UNKNOWN')
+    hadm_id = models.ForeignKey(Admission, on_delete=models.CASCADE, default=1) #need to give defauult course
+    # session_end_year = models.DateField()
+    objects = models.Manager()
 
 class Courses(models.Model):
     # TODO

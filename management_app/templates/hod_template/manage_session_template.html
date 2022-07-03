@@ -1,7 +1,7 @@
 {% extends 'hod_template/base_template.html' %}
 
 {% block page_title %}
-    Manage Session
+    Manage Lab Events
 {% endblock page_title %}
 
 {% block main_content %}
@@ -11,7 +11,7 @@
 <section class="content">
         <div class="container-fluid">
 
-            <a class="btn btn-primary" href="{% url 'add_session' %}" role="button">+ Add Session</a> <br/>&nbsp;
+            <a class="btn btn-primary" href="{% url 'add_session' %}" role="button">+ Add Lab Events</a> <br/>&nbsp;
 
             {% if messages %}
                                 <div class="form-group">
@@ -42,7 +42,7 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Session Details</h3>
+                            <h3 class="card-title">Lab Events Details</h3>
 
                             <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -60,8 +60,9 @@
                             <thead>
                                 <tr>
                                 <th>ID</th>
-                                <th>Session Start Year</th>
-                                <th>Session End Year</th>
+                                <th>Event Name</th>
+                                <th>Admission ID</th>
+                                <th>Event Date</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
@@ -69,8 +70,9 @@
                                 {% for session_year in session_years %}
                                 <tr>
                                 <td>{{ session_year.id }}</td>
-                                <td>{{ session_year.session_start_year }}</td>
-                                <td>{{ session_year.session_end_year }}</td>
+                                <td>{{ session_year.event_name }}</td>
+                                <td>{{ session_year.hadm_id.name }}</td>
+                                <td>{{ session_year.event_time }}</td>
                                 <td>
                                     <a href="{% url 'edit_session' session_year.id %}" class="btn btn-success">Edit</a> 
                                     <a href="{% url 'delete_session' session_year.id %}" class="btn btn-danger">Delete</a>

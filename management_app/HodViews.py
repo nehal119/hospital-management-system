@@ -268,7 +268,11 @@ def manage_session(request):
 
 
 def add_session(request):
-    return render(request, "hod_template/add_session_template.html")
+    admission = Admission.objects.all()
+    context = {
+        "admission": admission,
+    }
+    return render(request, "hod_template/add_session_template.html", context)
 
 
 def add_session_save(request):
@@ -276,12 +280,14 @@ def add_session_save(request):
         messages.error(request, "Invalid Method")
         return redirect('add_drugs')
     else:
-        session_start_year = request.POST.get('session_start_year')
-        session_end_year = request.POST.get('session_end_year')
+        event_time = request.POST.get('event_time')
+        event_name = request.POST.get('event_name')
+
+        admission_id = request.POST.get('admission')
+        admission = Admission.objects.get(id=admission_id)
 
         try:
-            sessionyear = SessionYearModel(
-                session_start_year=session_start_year, session_end_year=session_end_year)
+            sessionyear = SessionYearModel(event_name=event_name,event_time=event_time, hadm_id=admission)
             sessionyear.save()
             messages.success(request, "Session Year added Successfully!")
             return redirect("add_session")
