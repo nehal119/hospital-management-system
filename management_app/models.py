@@ -83,9 +83,9 @@ class Courses(models.Model):
 
 class Subjects(models.Model):
     id =models.AutoField(primary_key=True)
-    subject_name = models.CharField(max_length=255)
-    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE, default=1) #need to give defauult course
-    staff_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    prescription_name = models.CharField(max_length=255, default='UNKNOWN')
+    hadm_id = models.ForeignKey(Admission, on_delete=models.CASCADE, default=1) #need to give defauult course
+    drug_id = models.ForeignKey(Courses, on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()

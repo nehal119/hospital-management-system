@@ -3,8 +3,17 @@
   $ eval "$(/home/nehal/anaconda3/bin/conda shell.bash hook)"
   $ conda activate work
   $ python manage.py runserver
+
+  OR
+  $ source /home/nehal/anaconda3/bin/activate work
+  $ python manage.py runserver
 ```
 
+### Migrate
+```bash
+  $ python manage.py makemigrations
+  $ python manage.py migrate
+```
 
 # Django Hospital Management System (beta)
 This is a Simple Hospital Management System Developed for Educational Purpose using Python (Django).

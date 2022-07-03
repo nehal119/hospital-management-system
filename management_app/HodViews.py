@@ -534,11 +534,12 @@ def delete_student(request, student_id):
 
 
 def add_subject(request):
-    courses = Courses.objects.all()
-    staffs = CustomUser.objects.filter(user_type='2')
+    admission = Admission.objects.all()
+    drugs = Courses.objects.all()
+    # staffs = CustomUser.objects.filter(user_type='2')
     context = {
-        "courses": courses,
-        "staffs": staffs
+        "admission": admission,
+        "drugs": drugs
     }
     return render(request, 'hod_template/add_subject_template.html', context)
 
@@ -548,22 +549,21 @@ def add_subject_save(request):
         messages.error(request, "Method Not Allowed!")
         return redirect('add_subject')
     else:
-        subject_name = request.POST.get('subject')
+        prescription_name = request.POST.get('prescription')
 
-        course_id = request.POST.get('course')
-        course = Courses.objects.get(id=course_id)
+        admission_id = request.POST.get('admission')
+        admission = Admission.objects.get(id=admission_id)
 
-        staff_id = request.POST.get('staff')
-        staff = CustomUser.objects.get(id=staff_id)
+        drug_id = request.POST.get('drug')
+        drug = Courses.objects.get(id=drug_id)
 
         try:
-            subject = Subjects(subject_name=subject_name,
-                               course_id=course, staff_id=staff)
-            subject.save()
-            messages.success(request, "Subject Added Successfully!")
+            prescription = Subjects(prescription_name=prescription_name,hadm_id=admission, drug_id=drug)
+            prescription.save()
+            messages.success(request, "Prescription Added Successfully!")
             return redirect('add_subject')
         except:
-            messages.error(request, "Failed to Add Subject!")
+            messages.error(request, "Failed to Add Prescription!")
             return redirect('add_subject')
 
 
