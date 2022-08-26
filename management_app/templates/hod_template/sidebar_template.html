@@ -1,0 +1,202 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <!-- https://avatars.dicebear.com/api/avataaars/hello.png -->
+      <!-- <a href="{% url 'admin_home' %}" class="brand-link">
+        <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light">HMS</span>
+      </a> -->
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="https://avatars.dicebear.com/api/avataaars/{{ user.first_name }}.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="{% url 'admin_profile' %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+            <li class="nav-item">
+              {% url 'admin_home' as admin_home %}
+              <a href="{{ admin_home }}" class="nav-link {% if request.path == admin_home %} active {% endif %}">
+                <i class="nav-icon fas fa-hospital"></i>
+                <p>
+                  Hospital
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'manage_doctors' as manage_doctors %}
+              {% url 'edit_staff' staff_id=id as edit_staff %}
+              <a href="{{ manage_doctors }}" class="nav-link {% if request.path == manage_doctors %} active {% endif %} {% if request.path == edit_staff %} active {% endif %}">
+                <i class="nav-icon fas fa-user-md"></i>
+                <p>
+                  Manage Doctors
+                </p>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              {% url 'add_doctors' as add_doctors %}
+              <a href="{{ add_doctors }}" class="nav-link {% if request.path == add_doctors %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Add Doctors
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'manage_admission' as manage_admission %}
+              {% url 'edit_student' student_id=id as edit_student %}
+              <a href="{{ manage_admission }}" class="nav-link {% if request.path == manage_admission %} active {% endif %} {% if request.path == edit_student %} active {% endif %}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Admission
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'add_admission' as add_admission %}
+              <a href="{{ add_admission }}" class="nav-link {% if request.path == add_admission %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  New Admission
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'manage_drugs' as manage_drugs %}
+              {% url 'edit_course' course_id=id as edit_course %}
+              <a href="{{ manage_drugs }}" class="nav-link {% if request.path == manage_drugs %} active {% endif %} {% if request.path == edit_course %} active {% endif %}">
+                <i class="nav-icon fas fa-medkit"></i>
+                <p>
+                  Manage Drugs
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+            {% url 'add_drugs' as add_drugs %}
+              <a href="{{ add_drugs }}" class="nav-link {% if request.path == add_drugs %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Add Drugs
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'manage_prescription' as manage_prescription %}
+              {% url 'edit_subject' subject_id=id as edit_subject %}
+              <a href="{{ manage_prescription }}" class="nav-link {% if request.path == manage_prescription %} active {% endif %} {% if request.path == edit_subject %} active {% endif %}">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Manage Prescriptions
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'add_prescription' as add_prescription %}
+              <a href="{{ add_prescription }}" class="nav-link {% if request.path == add_prescription %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Add Prescriptions
+                </p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              {% url 'manage_labevents' as manage_labevents %}
+              {% url 'edit_session' session_id=id as edit_session %}
+              <a href="{{ manage_labevents }}" class="nav-link {% if request.path == manage_labevents %} active {% endif %} {% if request.path == edit_session %} active {% endif %}">
+                <i class="nav-icon fas fa-flask"></i>
+                <p>
+                  Manage Lab Events 
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'add_labevents' as add_labevents %}
+              <a href="{{ add_labevents }}" class="nav-link {% if request.path == add_labevents %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Add Lab Events
+                </p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              {% url 'admin_view_attendance' as admin_view_attendance %}
+              <a href="{{ admin_view_attendance }}" class="nav-link {% if request.path == admin_view_attendance %} active {% endif %}">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  View Transfers
+                </p>
+              </a>
+            </li>
+
+            <!-- <li class="nav-item">
+              {% url 'student_feedback_message' as student_feedback_message %}
+              <a href="{{ student_feedback_message }}" class="nav-link {% if request.path == student_feedback_message %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Student Feedback
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'staff_feedback_message' as staff_feedback_message %}
+              <a href="{{ staff_feedback_message }}" class="nav-link {% if request.path == staff_feedback_message %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Stafff Feedback
+                </p>
+              </a>
+            </li> -->
+
+            <li class="nav-item">
+              {% url 'student_leave_view' as student_leave_view %}
+              <a href="{{ student_leave_view }}" class="nav-link {% if request.path == student_leave_view %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Book Appointment
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'staff_leave_view' as staff_leave_view %}
+              <a href="{{ staff_leave_view }}" class="nav-link {% if request.path == staff_leave_view %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Discharge
+                </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
