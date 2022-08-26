@@ -1,4 +1,4 @@
-### MCA Major Project
+## MCA Major Project
 
 ### Conda activate shell
 ```bash
